@@ -277,6 +277,14 @@
   </div>
   <!-- End Main Content -->
 
+  <!-- Music Player -->
+  <audio id="bg-music" src="music/bg.mp3" loop></audio>
+  <div id="music-control" class="music-control">
+    <button id="music-btn" class="music-btn" title="Phát/Tạm dừng nhạc">
+      <i id="music-icon" class="fas fa-music"></i>
+    </button>
+  </div>
+
   <!-- Begin Footer -->
   <div class="footer">
     <div class="container">
@@ -294,6 +302,46 @@
     AOS.init({
       easing: "ease-out",
       duration: 800,
+    });
+
+    // Background Music Controller
+    $(document).ready(function() {
+      var audio = document.getElementById('bg-music');
+      var musicBtn = document.getElementById('music-btn');
+      var musicIcon = document.getElementById('music-icon');
+      var isPlaying = false;
+
+      // Autoplay attempt on first user interaction (browser policy compliant)
+      function initAutoplay() {
+        audio.play().then(function() {
+          isPlaying = true;
+          musicBtn.classList.add('playing');
+          musicIcon.className = 'fas fa-pause';
+        }).catch(function(error) {
+          console.log("Autoplay blocked, waiting for user click.");
+        });
+        document.removeEventListener('click', initAutoplay);
+      }
+      document.addEventListener('click', initAutoplay);
+
+      // Play/Pause toggle on button click
+      musicBtn.addEventListener('click', function(e) {
+        e.stopPropagation(); // Avoid triggering document autoplay listener
+        if (isPlaying) {
+          audio.pause();
+          isPlaying = false;
+          musicBtn.classList.remove('playing');
+          musicIcon.className = 'fas fa-music';
+        } else {
+          audio.play().then(function() {
+            isPlaying = true;
+            musicBtn.classList.add('playing');
+            musicIcon.className = 'fas fa-pause';
+          }).catch(function(error) {
+            console.log("Failed to play audio:", error);
+          });
+        }
+      });
     });
   </script>
 </body>

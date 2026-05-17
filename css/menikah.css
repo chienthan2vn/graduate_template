@@ -668,3 +668,42 @@ body.preloader-site {
   text-align: center;
   padding: 10px;
 }
+
+/* Floating Music Button */
+.music-control {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 999;
+}
+
+.music-btn {
+  height: 50px;
+  width: 50px;
+  border: none;
+  outline: none;
+  background-color: #996E6D;
+  color: white;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  box-shadow: 0 5px 20px rgba(14, 25, 80, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.music-btn:hover {
+  background-color: #BC8887;
+  transform: scale(1.05);
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.music-btn.playing {
+  animation: spin 3s linear infinite;
+}

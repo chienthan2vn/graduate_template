@@ -29,6 +29,8 @@ Dự án được phát triển và tối ưu hóa dựa trên mẫu template th
   - `bg.jpg`: Hình nền chính của banner phần đầu buổi lễ.
   - `divider-flowers-leaves.png`: Hoa văn trang trí chân trang đã được tối ưu kích thước thanh lịch.
   - `favicon.png`: Biểu tượng favicon nhỏ gọn hiển thị trên tab trình duyệt.
+- **`music/`**:
+  - `bg.mp3`: File nhạc nền (bạn hãy copy file nhạc mong muốn của mình vào đây và đổi tên thành `bg.mp3`).
 
 ---
 
@@ -40,11 +42,14 @@ Dự án là một trang web tĩnh (static website), do đó bạn không cần 
 
 ---
 
-## 🎨 Cấu HÌnh Hình Nền Tùy Chỉnh
+## 🎨 Cấu Hình Hình Nền & Nhạc Nền Tùy Chỉnh
 
-Nếu bạn muốn cập nhật hình ảnh cá nhân cho thiệp:
+Nếu bạn muốn cập nhật hình ảnh hoặc nhạc nền cá nhân cho thiệp:
 - **Hình nền Banner chính (`.hero`):** Lưu ảnh mới của bạn vào thư mục `image/bg.jpg` hoặc sửa đường dẫn trong [css/menikah.css](css/menikah.css) tại class `.hero`:
   ```css
   background: linear-gradient(rgba(153, 110, 109, 0.65), rgba(153, 110, 109, 0.65)), rgba(0, 0, 0, 0.55) url("../image/bg.jpg") no-repeat;
   ```
 - **Hoa văn trang trí chân trang (`.section-light`):** Ảnh nằm tại `image/divider-flowers-leaves.png`, kích thước hiển thị được cấu hình tối ưu ở cuối file [css/menikah.css](css/menikah.css).
+- **Nhạc nền (`bg.mp3`):** Copy file nhạc định dạng MP3 của bạn vào thư mục `music/` và đổi tên thành `bg.mp3`. 
+  - Trang web đã tích hợp sẵn một nút phát/tạm dừng nhạc hình đĩa tròn xoay vô cùng tinh tế ở góc dưới bên trái màn hình.
+  - Nhạc sẽ tự động cố gắng phát khi khách mời tương tác (click chuột lần đầu tiên) vào bất kỳ đâu trên màn hình, tuân thủ đúng chính sách Autoplay bảo mật của các trình duyệt hiện đại ngày nay.
