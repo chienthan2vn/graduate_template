@@ -82,6 +82,13 @@
         <div class="container has-text-centered">
           <h1 class="subtitle">Thiệp Mời Lễ Tốt Nghiệp Thạc Sĩ</h1>
           <h2 class="title">Lương Đức Thuận</h2>
+
+          <!-- Guest Invitation Card Box -->
+          <div class="guest-box" id="guest-container" style="display: none;">
+            <p class="guest-label">Trân trọng kính mời</p>
+            <p class="guest-name" id="guest-name-display"></p>
+          </div>
+
           <h4 class="subtitle tempatwaktu">
             09:00 - 11:00 | Thứ Bảy, 23/05/2026
             <br />
@@ -361,6 +368,14 @@
           });
         }
       });
+
+      // Guest Name Parser from URL Query (?name=... or ?to=...)
+      var urlParams = new URLSearchParams(window.location.search);
+      var guestName = urlParams.get('name') || urlParams.get('to');
+      if (guestName) {
+        $('#guest-name-display').text(decodeURIComponent(guestName));
+        $('#guest-container').show();
+      }
     });
   </script>
 </body>

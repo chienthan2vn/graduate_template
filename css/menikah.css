@@ -708,8 +708,55 @@ body.preloader-site {
   animation: spin 3s linear infinite;
 }
 
+/* Guest Invitation Card Box Style */
+.guest-box {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 12px 35px;
+  border-radius: 12px;
+  display: inline-block;
+  margin: 25px auto 15px auto;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+  max-width: 90%;
+}
+
+.guest-label {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #EDD2D1;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.guest-name {
+  font-family: 'Great Vibes', 'Dancing Script', cursive;
+  font-size: 2.5rem;
+  color: #ffffff;
+  font-weight: 700;
+  line-height: 2.8rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
 /* Mobile Responsive Styling */
 @media (max-width: 599px) {
+  /* Guest Box Mobile Styling */
+  .guest-box {
+    padding: 8px 20px !important;
+    margin: 15px auto 10px auto !important;
+  }
+  .guest-label {
+    font-size: 0.75rem !important;
+    letter-spacing: 2px !important;
+  }
+  .guest-name {
+    font-size: 1.8rem !important;
+    line-height: 2.1rem !important;
+  }
+
   /* Hero Text Scaling */
   .hero .title {
     font-size: 2.8rem !important;
