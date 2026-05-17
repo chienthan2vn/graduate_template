@@ -707,3 +707,76 @@ body.preloader-site {
 .music-btn.playing {
   animation: spin 3s linear infinite;
 }
+
+/* Mobile Responsive Styling */
+@media (max-width: 599px) {
+  /* Hero Text Scaling */
+  .hero .title {
+    font-size: 2.8rem !important;
+    line-height: 3.2rem !important;
+  }
+  
+  .hero .subtitle {
+    font-size: 1.1rem !important;
+    padding: 15px 10px !important;
+  }
+  
+  .hero .tempatwaktu {
+    font-size: 0.95rem !important;
+    padding-top: 15px !important;
+    line-height: 1.4rem !important;
+  }
+
+  /* Body Greeting Titles */
+  .nama-lengkap {
+    font-size: 2.3rem !important;
+    line-height: 2.6rem !important;
+  }
+  
+  .ampersand {
+    font-size: 2.6rem !important;
+    line-height: 3rem !important;
+  }
+
+  /* Countdown Scaling */
+  ul#hitungmundur {
+    margin: 15px 0 !important;
+  }
+  
+  ul#hitungmundur li {
+    margin: 0 4px !important;
+  }
+  
+  ul#hitungmundur li span {
+    font-size: 22px !important;
+    line-height: 22px !important;
+  }
+  
+  ul#hitungmundur li.separator {
+    font-size: 22px !important;
+    line-height: 18px !important;
+  }
+  
+  ul#hitungmundur li p {
+    font-size: 11px !important;
+  }
+
+  /* Adjust section paddings slightly for mobile space saving */
+  .main-content .section-light,
+  .main-content .section-dark,
+  .main-content .section-darker {
+    padding: 50px 20px !important;
+  }
+
+  .main-content .section-light.prolog {
+    padding-bottom: 20px !important;
+  }
+
+  /* Add to calendar button size on small screens */
+  .btn-cta, .btn-whatsapp {
+    width: 180px !important;
+    height: 55px !important;
+    font-size: 1rem !important;
+    margin: 0.5rem !important;
+  }
+}
