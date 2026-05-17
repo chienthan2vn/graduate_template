@@ -9,8 +9,6 @@
   <title>Luong Duc Thuan's graduation ceremony</title>
 
   <meta property="og:title" content="Luong Duc Thuan's graduation ceremony">
-  <meta property="og:description"
-    content="Trân trọng kính mời quý thầy cô, gia đình, bạn bè và đồng nghiệp đến tham dự lễ tốt nghiệp thạc sĩ ngành Khoa học máy tính của tôi vào lúc 09:00 ngày 23/05/2026 tại Học viện Công nghệ Bưu chính Viễn thông.">
   <meta property="og:locale" content="vi_VN" />
   <meta property="og:image" content="image/favicon.png">
   <meta property="og:url" content="index.html">
@@ -305,7 +303,7 @@
     });
 
     // Background Music Controller
-    $(document).ready(function() {
+    $(document).ready(function () {
       var audio = document.getElementById('bg-music');
       var musicBtn = document.getElementById('music-btn');
       var musicIcon = document.getElementById('music-icon');
@@ -313,29 +311,29 @@
 
       // Function to start playing audio
       function playAudio() {
-        audio.play().then(function() {
+        audio.play().then(function () {
           isPlaying = true;
           musicBtn.classList.add('playing');
           musicIcon.className = 'fas fa-pause';
-        }).catch(function(error) {
+        }).catch(function (error) {
           console.log("Immediate autoplay blocked by browser. Setting up fallback interaction listeners.");
-          
+
           // Fallback: play on any user interaction (click, touch, scroll)
-          var startPlay = function() {
-            audio.play().then(function() {
+          var startPlay = function () {
+            audio.play().then(function () {
               isPlaying = true;
               musicBtn.classList.add('playing');
               musicIcon.className = 'fas fa-pause';
-              
+
               // Remove fallback listeners once playing starts
               window.removeEventListener('click', startPlay);
               window.removeEventListener('touchstart', startPlay);
               window.removeEventListener('scroll', startPlay);
-            }).catch(function(err) {
+            }).catch(function (err) {
               console.log("Play failed in fallback interaction listener:", err);
             });
           };
-          
+
           window.addEventListener('click', startPlay);
           window.addEventListener('touchstart', startPlay);
           window.addEventListener('scroll', startPlay);
@@ -346,7 +344,7 @@
       playAudio();
 
       // Play/Pause toggle on button click
-      musicBtn.addEventListener('click', function(e) {
+      musicBtn.addEventListener('click', function (e) {
         e.stopPropagation(); // Avoid triggering any fallback listeners
         if (isPlaying) {
           audio.pause();
@@ -354,11 +352,11 @@
           musicBtn.classList.remove('playing');
           musicIcon.className = 'fas fa-music';
         } else {
-          audio.play().then(function() {
+          audio.play().then(function () {
             isPlaying = true;
             musicBtn.classList.add('playing');
             musicIcon.className = 'fas fa-pause';
-          }).catch(function(error) {
+          }).catch(function (error) {
             console.log("Failed to play audio on click:", error);
           });
         }
