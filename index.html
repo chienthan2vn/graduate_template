@@ -278,7 +278,7 @@
   <!-- End Main Content -->
 
   <!-- Music Player -->
-  <audio id="bg-music" src="music/bg.mp3" loop></audio>
+  <audio id="bg-music" src="music/bg.mp3" autoplay loop></audio>
   <div id="music-control" class="music-control">
     <button id="music-btn" class="music-btn" title="Phát/Tạm dừng nhạc">
       <i id="music-icon" class="fas fa-music"></i>
@@ -311,22 +311,43 @@
       var musicIcon = document.getElementById('music-icon');
       var isPlaying = false;
 
-      // Autoplay attempt on first user interaction (browser policy compliant)
-      function initAutoplay() {
+      // Function to start playing audio
+      function playAudio() {
         audio.play().then(function() {
           isPlaying = true;
           musicBtn.classList.add('playing');
           musicIcon.className = 'fas fa-pause';
         }).catch(function(error) {
-          console.log("Autoplay blocked, waiting for user click.");
+          console.log("Immediate autoplay blocked by browser. Setting up fallback interaction listeners.");
+          
+          // Fallback: play on any user interaction (click, touch, scroll)
+          var startPlay = function() {
+            audio.play().then(function() {
+              isPlaying = true;
+              musicBtn.classList.add('playing');
+              musicIcon.className = 'fas fa-pause';
+              
+              // Remove fallback listeners once playing starts
+              window.removeEventListener('click', startPlay);
+              window.removeEventListener('touchstart', startPlay);
+              window.removeEventListener('scroll', startPlay);
+            }).catch(function(err) {
+              console.log("Play failed in fallback interaction listener:", err);
+            });
+          };
+          
+          window.addEventListener('click', startPlay);
+          window.addEventListener('touchstart', startPlay);
+          window.addEventListener('scroll', startPlay);
         });
-        document.removeEventListener('click', initAutoplay);
       }
-      document.addEventListener('click', initAutoplay);
+
+      // Try to play immediately
+      playAudio();
 
       // Play/Pause toggle on button click
       musicBtn.addEventListener('click', function(e) {
-        e.stopPropagation(); // Avoid triggering document autoplay listener
+        e.stopPropagation(); // Avoid triggering any fallback listeners
         if (isPlaying) {
           audio.pause();
           isPlaying = false;
@@ -338,7 +359,7 @@
             musicBtn.classList.add('playing');
             musicIcon.className = 'fas fa-pause';
           }).catch(function(error) {
-            console.log("Failed to play audio:", error);
+            console.log("Failed to play audio on click:", error);
           });
         }
       });
